@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Displaying Welcome Message and User's Decrypted Pulse Data</title>
+    <script type="text/javascript">
+      var intervalId;
+  
+      function startRefresh() {
+        intervalId = setInterval(function(){
+          location.reload();
+        }, 5000);
+      }
+  
+      function stopRefresh() {
+        clearInterval(intervalId);
+      }
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      .pulse-data {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+      }
+      header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+
+
+    </style>
+  </head>
+  <body>
+    
+    <header>
+      <nav>
+        <ul>
+
+          <li><a href="{% url 'home' %}">Home</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logou' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          {% if user.is_authenticated %}
+          {% if user.is_staff %}
+          <li><a href="{% url 'welcome' %}">Patients' Details</a></li>
+          {% else %}
+          <li><a href="{% url 'welcome' %}">My Pulse</a></li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+   
+     <center> <h1>Welcome {{ username }}</h1></center>
+     {% if request.user.is_staff %}
+    <div class="container">
+      <p>Patients List</p>
+      <div class="pulse-data">
+        <ol>
+          {% for i in l %}   
+      <li><a href="{% url 'requir' i %}" style="text-decoration: none;color:#111">{{i}}</a></li> <br>
+        {% endfor %} 
+        </ol>
+        
+      </div>
+    </div>
+    {% else %}
+    <div class="container">
+      <p>Here is your decrypted pulse data:</p>
+      <div class="pulse-data"> 
+        <p>Current pulse: {{ decrypted_pulse_data }}</p>
+        
+          {% for i in res %} 
+      {{i.pul}} <br><br>
+        {% endfor %}
+        
+        
+        
+        
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>

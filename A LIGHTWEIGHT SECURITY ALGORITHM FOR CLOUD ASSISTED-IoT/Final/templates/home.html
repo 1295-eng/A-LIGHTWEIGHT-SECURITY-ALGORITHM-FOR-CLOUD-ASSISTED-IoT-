@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <style>
+    header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+
+main {
+  margin: 20px;
+  text-align: center;
+}
+.next-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+  </style>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logou' %}">Logout</a></li>
+          
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          {% if user.is_authenticated %}
+          {% if user.is_staff %}
+          <li><a href="{% url 'welcome' %}">Patients' Details</a></li>
+          {% else %}
+          <li><a href="{% url 'welcome' %}">My Pulse</a></li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>A LIGHTWEIGHT SECURITY ALGORITHM FOR CLOUD ASSISTED-IoT</h1>
+      <br>
+      <div style="display:flex;">
+        <img src="../static/Network-Security-Number-1.jpg" style="max-width: 100%;max-height: 450px;padding-left: 30px;">
+        <p style="text-align:justify;padding-left:120px;padding-right: 200px;line-height: 25px;">    The Internet of Things, which is the fastest technology, will boost medical electronics, agriculture, and the defense sector. 
+          IoT is all on discovering a purpose for every object. The cloud assisted IoT provides a possible solution for data growth problems. However, as result of clouds influence, IoT now faces new security concerns for data mutuality between two parties. This work conducts a systematic investigation using a secure cloud assisted IoT data management approach to maintain data confidentiality when collecting, storing and accessing IoT data using the cloud while taking into account the constant rising users. So, an optimized node level power aware security mechanism is used in the proposed system. As a result, a secure IoT using our technology might withstand most data confidentiality threats from both insiders and outsiders of the IoT. Using a heartbeat sensor and a node MCU, create a heartbeat monitoring system. At the node MCU level, giving security to the patient's health data and preventing unauthorized users from attacking it. Lightweight security methods for low-power IoT devices with smaller key sizes, lower power consumption, and lower memory and transmission capacity reserve are used to achieve security. In order to achieve this, RSA algorithm results have been tabulated for this experimental setup to measure the performance. The patient's safe data is then uploaded to a cloud platform, where it may now be accessed by doctors and other applications such as mobile apps..Here you can find all the information about our products and services.</p>
+          
+      </div>
+      
+    </main>
+  </body>
+</html>

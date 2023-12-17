@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <style>
+
+
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+.about-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-text {
+  max-width: 600px;
+  padding: 20px;
+}
+
+.about-text h2 {
+  font-size: 2em;
+}
+
+.about-text p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 25%;
+  height: 25%;
+  padding-right: 10px;
+}
+.resume-btn{
+    width: 190px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    box-shadow: 5px 10px 30px rgba(24,139,119,0.2);
+}
+.resume-btn:hover{
+background-color: black;
+transition: all ease 0.2s;
+}
+.cards{
+    width: 250px;
+    height: 200px;
+    float: left;
+    padding: 20px;
+    border: 2px solid;
+    margin: 40px;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Sans-serif;
+}
+
+  </style>
+  <body>
+    <div class="container">
+        <header>
+            <nav>
+              <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logou' %}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{% url 'login' %}">Login</a></li>
+                  {% endif %}
+                <li><a href="{% url 'about' %}" active>About</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'welcome' %}">Patients' Details</a></li>
+                {% else %}
+                <li><a href="{% url 'welcome' %}">My Pulse</a></li>
+                {% endif %}
+                {% endif %}
+              </ul>
+            </nav>
+          </header>
+      <main>
+        <div class="about-section">
+          <img src="../static/Network-Security-Number-1.jpg" alt="About Image">
+          <div class="about-text">
+            <h2>Our Website</h2>
+            <p>A node-level power-aware security mechanism is used in the proposed system. As a result, a secure IoT using our technology might withstand most data confidentiality threats from both insiders and outsiders of the IoT. Lightweight security methods for low-power IoT devices with smaller key sizes, lower power consumption, and lower memory and transmission capacity reserve are used to achieve security.</p>
+            <p>A node-level implementation of the public key cryptosystem, Elliptic Curve Cryptography, which was considered as the efficient algorithm based on research, is being implemented to achieve efficient security for low power IoT devices.</p>
+           <div style="display: flex;">
+            <form method="get" action="{% static 'C:\Users\LAYA VARMA\Desktop\Final\static\A4.docx' %}">
+              <button type="submit" class="resume-btn">Download Doc</button>
+           </form>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+           <form method="get" action="{% static 'C:\Users\LAYA VARMA\Desktop\Final\static\A4.pptx' %}">
+              <button type="submit" class="resume-btn">Download PPT</button>
+           </form>
+           </div>
+           
+          </div>
+          <br>
+          
+          
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

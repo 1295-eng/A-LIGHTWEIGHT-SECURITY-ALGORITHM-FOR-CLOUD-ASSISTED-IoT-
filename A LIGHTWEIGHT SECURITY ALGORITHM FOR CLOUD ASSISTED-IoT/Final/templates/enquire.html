@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <style>
+    header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+
+main {
+  margin: 20px;
+  text-align: center;
+}
+
+  </style>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logou' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          {% if user.is_authenticated %}
+          {% if user.is_staff %}
+          <li><a href="{% url 'welcome' %}">Patients' Details</a></li>
+          {% else %}
+          <li><a href="{% url 'welcome' %}">My Pulse</a></li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <main>
+        
+      <h1>Contacted Messages</h1>
+      <p>Here you can find all the information about our products and services.</p>
+       
+    </main>
+    <ul>
+        {% for i in msgs %}
+        <li>Name: {{i.name}}<br>E-mail:{{i.email}}<br>Message:{{i.message}}</li>
+        {% endfor %}
+       </ul>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+main {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  background-color: #fff;
+  padding: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  flex-basis: calc(33.33% - 20px);
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.box:hover {
+  background-color: #f2f2f2;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+p {
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+  <body>
+    <header>
+      <h1>Dashboard</h1>
+    </header>
+    <main>
+      <a href="registered_users.html" class="box">
+        <h2>Registered Users with Approval Required</h2>
+        <p>View Registered Users</p>
+      </a>
+      <a href="files_downloaded.html" class="box">
+        <h2>Number of Files Downloaded</h2>
+        <p>View Files Downloaded</p>
+      </a>
+      <a href="patient_details.html" class="box">
+        <h2>Get Patient Details</h2>
+        <p>View Patient Details</p>
+      </a>
+    </main>
+  </body>
+</html>
